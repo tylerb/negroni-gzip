@@ -2,11 +2,12 @@
 package gzip
 
 import (
-	"compress/gzip"
 	"io/ioutil"
 	"net/http"
 	"strings"
 	"sync"
+
+	"github.com/klauspost/compress/gzip"
 
 	"github.com/codegangsta/negroni"
 )
@@ -42,6 +43,7 @@ func (grw gzipResponseWriter) Write(b []byte) (int, error) {
 	if len(grw.Header().Get(headerContentType)) == 0 {
 		grw.Header().Set(headerContentType, http.DetectContentType(b))
 	}
+	// fmt.Println("GZIP WRITING", len(b), grw.Header().Get(headerContentType))
 	return grw.w.Write(b)
 }
 
