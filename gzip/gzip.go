@@ -9,7 +9,7 @@ import (
 
 	"github.com/klauspost/compress/gzip"
 
-	"github.com/codegangsta/negroni"
+	"github.com/urfave/negroni"
 )
 
 // These compression constants are copied from the compress/gzip package.
